@@ -8,11 +8,8 @@ h1
       - @room_messages.each do |room_message|
         .chat-message-container
           .row.no-gutters
-            .col-auto.text-center
-              |  <img src="
-              = gravatar_url(room_message.user)
-              | " class="avatar" alt=""> 
             .col
+              p.nickname #{room_message.user.username}
               .message-content
                 p.mb-1
                   = room_message.message
@@ -32,9 +29,8 @@ h1
 .d-none[data-role="message-template"]
   .chat-message-container
     .row.no-gutters
-      .col-auto.text-center
-        p[data-role="user-name"]
       .col
+        p.nickname[data-role="user-name"]
         .message-content
           p.mb-1[data-role="message-text"]
 
