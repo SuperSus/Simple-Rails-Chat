@@ -1,15 +1,6 @@
 .row
   .col-12.col-md-3
-    .mb-3
-      = link_to new_room_path, class: "btn btn-primary" do
-        |  Create a room 
-    - if @rooms.present?
-      nav.nav.flex-column
-        - @rooms.each do |room|
-          = link_to room.name, room_path(room), class: "nav-link room-nav-link"
-    - else
-      .text-muted
-        |  The are no rooms 
+    = render partial: 'rooms'
   .col
     .alert.alert-primary
       h4.alert-heading

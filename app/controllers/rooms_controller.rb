@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room
+  before_action :set_room, :set_all_rooms
 
   def index
     @rooms = Room.all
@@ -31,11 +31,20 @@ class RoomsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @room_message = RoomMessage.new room: @room
+    @room_messages = @room.room_messages.includes(:user)
+  end
   
   private
 
   def set_room
     @room = Room.find(params[:id]) if params[:id]
+  end
+
+  def set_all_rooms
+    @rooms = Room.all
   end
 
   def room_params
